@@ -113,8 +113,15 @@ minetest.register_entity("nodevil:bullett",{
 		local objs = minetest.env:get_objects_inside_radius({x=pos.x,y=pos.y,z=pos.z}, 1)
 		if objs~=nil  then
 			if objs[1]:is_player() then
+			minetest.sound_play("a", {
+				pos = pos;
+				gain = 3;
+				max_hear_distance = 50;
+			})
 				self.object:remove()
 			objs[1]:set_hp(objs[1]:get_hp()-1)
+
+			
 			end
 		end
 	end,
